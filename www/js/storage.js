@@ -23,15 +23,15 @@ var LocalStorageStore = function(successCallback, errorCallback) {
 
     callLater(successCallback);
 
-}
+};
 
-var LocalStorage= function() {
+var LocalStorage ={
 
-    this.save = function(user,data) {
+    save : function(item,data) {
 		window.localStorage.setItem(item, JSON.stringify(data));
      
-    };
-   this.get = function(item) {
+    },
+   get : function(item) {
 	       return JSON.parse(window.localStorage.getItem(item));
         
     

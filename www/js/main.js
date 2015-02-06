@@ -1,4 +1,7 @@
 	// create the module and name it scotchApp
+	var user=true;
+	//LocalStorage.save('user', {id: 12 , name: 'jaatin'});
+
 	var providerApp = angular.module('providerApp', ['ngRoute']);
 
 	// configure our routes
@@ -7,8 +10,11 @@
 
 			// route for the home page
 			.when('/', {
-				templateUrl : '/index.html',
-				controller  : 'mainController'
+				templateUrl : 'view/main/home.html',
+				controller  : 'mainController',
+					auth: function (user) {
+      return user && user.isAdmin
+    }
 			})
 
 			// route for the about page
@@ -35,9 +41,27 @@
 				templateUrl : 'view/userprofile/userprofile.html',
 				controller  : 'userController'
 			})
+		.otherwise({ redirectTo : '/signup'})
 			
-	});
+	}).
+	run(function($rootScope, $location) {
+    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+      if ($rootScope.loggedInUser == null) {
+        // no logged user, redirect to /login
+        if ( next.templateUrl === "login.html") {
+        } else {
+         // $location.path("/login.html");
+		//  window.location.href = 'login.html';
+        }
+      }
+    });
 
+	
+})
+;
+
+
+//console.log(uesr);
 	// create the controller and inject Angular's $scope
 	
 
@@ -57,12 +81,5 @@
 
 
 
-	appfunctions={
-	
-login : function()
-		{
 
-console.log("xyz");
 
-	}
-	}

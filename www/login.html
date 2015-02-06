@@ -97,28 +97,10 @@
   <script src="js/jquery-1.8.3.min.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>  
   <script src="js/jquery.blockui.js"></script>
+<script src="js/app.js"></script>		
   <script>
-    
-
-	 var handleLoginForm = function () {
-
-        jQuery('#forget-password').click(function () {
-            jQuery('.login-form').hide();
-            jQuery('.forget-form').show(200);
-        });
-
-        jQuery('#forget-btn, #back-btn').click(function () {
-            jQuery('.login-form').slideDown(200);
-            jQuery('.forget-form').slideUp(200);
-        });
-    };
-	  var initLogin = function () {
-            handleLoginForm();
-           
-        };
-
     jQuery(document).ready(function() {     
-     initLogin();
+	App.init();
 	   // login page setup
       
  });

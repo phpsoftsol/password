@@ -1,4 +1,4 @@
-providerApp.controller('mainController', function($scope,$location) {
+providerApp.controller('mainController', function($rootScope,$scope,$location) {
 		// create a message to display in our view	
 		    $scope.email = "user@gmail.com",
 			$scope.password="admin",
@@ -6,11 +6,12 @@ providerApp.controller('mainController', function($scope,$location) {
  $scope.init=function()
 		{
   // $scope.loginuser();
+  $rootScope.loggedInUser=true;
+  console.log( $location.path());
 		} 	
 
 		$scope.loginuser=function()
 		{
-      console.log("asd"); 
 	  if($scope.email=="user@gmail.com" && $scope.password=="admin")
         {
            
